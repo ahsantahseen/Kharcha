@@ -41,15 +41,16 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:autofillHints="emailAddress"
             android:layout_marginBottom="5dp"
-            android:hint="@string/app_emailPlaceHolder"
-            android:textColorHint="@color/appSecondary"
+            android:autofillHints="emailAddress"
             android:background="@drawable/custom_edit_text"
             android:ems="10"
+            android:hint="@string/app_emailPlaceHolder"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColor="@color/appSecondary"
+            android:textColorHint="@color/appSecondary"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
@@ -59,11 +60,12 @@
             android:autofillHints="password"
             android:background="@drawable/custom_edit_text"
             android:ems="10"
-            android:padding="10dp"
-            android:textColorHint="@color/appSecondary"
             android:hint="@string/app_passwordPlaceHolder"
             android:inputType="textPassword"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColor="@color/appSecondary"
+            android:textColorHint="@color/appSecondary" />
 
         <Button
             android:layout_width="match_parent"
