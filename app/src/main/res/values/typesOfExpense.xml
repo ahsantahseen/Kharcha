@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="expenses">
+        <item>Food</item>
+        <item>Transport</item>
+        <item>Health</item>
+        <item>Entertainment</item>
+    </array>
+</resources>

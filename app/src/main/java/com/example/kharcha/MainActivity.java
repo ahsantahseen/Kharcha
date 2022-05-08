@@ -2,9 +2,11 @@ package com.example.kharcha;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.View;
 import android.widget.TextView;
 
 import com.anychart.AnyChart;
@@ -22,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView = findViewById(R.id.appHeading);
-        SpannableString content = new SpannableString("KHARCHA");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        textView.setText(content);
         Pie pie = AnyChart.pie();
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("",12000));
@@ -35,5 +33,10 @@ public class MainActivity extends AppCompatActivity {
         pie.data(data);
         AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
         anyChartView.setChart(pie);
+    }
+
+    public void goToExpense(View view){
+        Intent startActivity = new Intent(this, AddExpense.class);
+        startActivity(startActivity);
     }
 }

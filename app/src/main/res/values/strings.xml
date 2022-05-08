@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">kharcha</string>
+    <string name="app_name">خرچہ</string>
     <string name="app_emailPlaceHolder">Email</string>
     <string name="app_passwordPlaceHolder">Password</string>
     <string name="app_namePlaceHolder">Name</string>
     <string name="app_agePlaceHolder">Age</string>
-    <string name="app_tagline">your\'s truly</string>
+    <string name="app_tagline">آپ کے اخراجات کے لیے</string>
     <string name="login_signupRoute">Don’t have an account? Sign up</string>
 </resources>

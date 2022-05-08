@@ -8,6 +8,22 @@
     tools:context=".LoginScreen">
 
     <TextView
+        android:id="@+id/appHeading3"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_button"
+        android:gravity="center"
+        android:text="خرچہ"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/loginHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
