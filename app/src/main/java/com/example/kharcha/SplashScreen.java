@@ -12,6 +12,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         //After two seconds the splash screen
+
         Intent loginIntent=new Intent(this,LoginScreen.class);
         startActivity(loginIntent);
     }
