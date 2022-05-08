@@ -10,4 +10,8 @@
     <color name="newColor">#F56D91</color>
     <color name="appSecondary">#A9F56D91</color>
     <color name="inputColor">#69F56D91</color>
+    <color name="foodColor">#3ABEFF</color>
+    <color name="transportColor">#FF3C38</color>
+    <color name="healthColor">#FFCF4D</color>
+    <color name="entertainmentColor">#8BC34A</color>
 </resources>

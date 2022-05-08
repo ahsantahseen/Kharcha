@@ -72,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/custom_button"
+            android:onClick="goToHome"
             android:text="Login"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -81,11 +82,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/signUpRoute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/login_signupRoute"
+        android:clickable="true"
+        android:onClick="goToSignUp"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

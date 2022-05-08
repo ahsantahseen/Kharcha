@@ -5,5 +5,5 @@
     <string name="app_namePlaceHolder">Name</string>
     <string name="app_agePlaceHolder">Age</string>
     <string name="app_tagline">your\'s truly</string>
-    <string name="login_signupRoute">Don’t have an account? Sign up </string>
+    <string name="login_signupRoute">Don’t have an account? Sign up</string>
 </resources>
