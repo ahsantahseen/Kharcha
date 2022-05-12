@@ -40,7 +40,7 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
@@ -132,17 +132,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/calculatorBtn"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/white"
-            android:text="Open Calculator"
-            android:textColor="@color/teal_700"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
