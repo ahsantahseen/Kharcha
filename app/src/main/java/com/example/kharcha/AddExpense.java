@@ -14,8 +14,8 @@ public class AddExpense extends AppCompatActivity {
         setContentView(R.layout.activity_add_expense);
 
     }
-    public void goToCalculator(View view){
-        Intent startActivity = new Intent(this, Intent.CATEGORY_APP_CALCULATOR.getClass());
+    public void goToMainMenu(View view){
+        Intent startActivity = new Intent(this, MainActivity.class);
         startActivity(startActivity);
     }
 }
