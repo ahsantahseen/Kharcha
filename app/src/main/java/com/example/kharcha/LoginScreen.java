@@ -38,16 +38,6 @@ public class LoginScreen extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user=auth.getCurrentUser();
-        if(user!=null){
-            Intent startActivity = new Intent(this, MainActivity.class);
-            startActivity(startActivity);
-            finish();
-        }
-    }
 
     public void goToSignUp(View view){
         Intent startActivity = new Intent(this, SignUpScreen.class);

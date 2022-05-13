@@ -75,7 +75,7 @@ public class SignUpScreen extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    Toast.makeText(SignUpScreen.this, "Thank you for creating an account!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpScreen.this, "Thank you for creating an account! Login with your new account", Toast.LENGTH_SHORT).show();
                                     Intent startActivity = new Intent(SignUpScreen.this, LoginScreen.class);
                                     startActivity(startActivity);
                                     finish();

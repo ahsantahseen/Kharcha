@@ -6,16 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class AddExpense extends AppCompatActivity {
+import com.google.firebase.database.FirebaseDatabase;
 
+public class AddExpense extends AppCompatActivity {
+    FirebaseDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
     }
+
     public void goToMainMenu(View view){
         Intent startActivity = new Intent(this, MainActivity.class);
         startActivity(startActivity);
     }
+
+
 }
