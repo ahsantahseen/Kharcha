@@ -69,7 +69,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_edit_text"
@@ -82,21 +82,7 @@
             android:textColorHint="@color/appSecondary" />
 
         <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_edit_text"
-            android:ems="10"
-            android:hint="@string/app_agePlaceHolder"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            android:textColor="@color/appSecondary"
-            android:textColorHint="@color/appSecondary" />
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress3"
+            android:id="@+id/userEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -111,7 +97,20 @@
             android:textColorHint="@color/appSecondary" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/userDateOfBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_edit_text"
+            android:ems="10"
+            android:hint="Date of Birth"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColorHint="@color/appSecondary" />
+
+        <EditText
+            android:id="@+id/userPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -135,7 +134,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/registerBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
