@@ -50,7 +50,11 @@ public class LoginScreen extends AppCompatActivity {
         if(TextUtils.isEmpty(email)){
             loginEmail.setError("Email cannot be empty");
             loginEmail.requestFocus();
-        }else if(TextUtils.isEmpty(password)){
+        }else if(!ExtraUtils.isValidEmail(email)){
+            loginEmail.setError("Please enter valid email");
+            loginEmail.requestFocus();
+        }
+        else if(TextUtils.isEmpty(password)){
             loginPassword.setError("Password cannot be empty");
             loginPassword.requestFocus();
         }else if(password.length()<6) {

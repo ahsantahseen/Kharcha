@@ -86,6 +86,10 @@ public class SignUpScreen extends AppCompatActivity {
             userEmail.setError("Email cannot be empty");
             userEmail.requestFocus();
         }
+        else if(!ExtraUtils.isValidEmail(email)){
+            userEmail.setError("Please enter valid email");
+            userEmail.requestFocus();
+        }
         else if(TextUtils.isEmpty(dob)){
             userDOB.setError("Date of Birth cannot be empty");
             userDOB.requestFocus();
