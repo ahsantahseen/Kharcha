@@ -1,12 +1,18 @@
 package com.example.kharcha;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class SignUpScreen extends AppCompatActivity {
    EditText userName;
    EditText userPassword;
@@ -24,6 +33,7 @@ public class SignUpScreen extends AppCompatActivity {
    EditText userDOB;
    Button registerBtn;
 
+   Calendar calendar;
    FirebaseAuth auth;
    DatabaseReference db;
     @Override
@@ -40,6 +50,27 @@ public class SignUpScreen extends AppCompatActivity {
         db=FirebaseDatabase.getInstance().getReference();
         registerBtn.setOnClickListener(view -> {
             createUser();
+        });
+        Calendar calendar=Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener date=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,day);
+                updateCalendar();
+            }
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            private void updateCalendar(){
+                userDOB.setText(DateFormat.getDateInstance().format(calendar.getTime()));
+            }
+        };
+        userDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(SignUpScreen.this,date,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
         });
     }
     public void createUser(){

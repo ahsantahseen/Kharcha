@@ -42,6 +42,14 @@
         app:layout_constraintTop_toBottomOf="@+id/appHeading">
 
         <TextView
+            android:id="@+id/currentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <TextView
             android:id="@+id/totalExpHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,14 +58,6 @@
             android:textColor="@color/white"
             android:textSize="26sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/TotalExpValue"
@@ -70,15 +70,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
@@ -90,7 +87,7 @@
             android:layout_marginBottom="20dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
@@ -98,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="22dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/food_color_icon" />
@@ -118,15 +115,16 @@
                 android:id="@+id/FoodValue"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="115dp"
+                android:layout_marginLeft="120dp"
                 android:layout_weight="1"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/newColor"
                 android:textSize="19dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
@@ -134,8 +132,8 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="22dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/transport_color_icon" />
@@ -154,15 +152,16 @@
                 android:id="@+id/TransportValue"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
+                android:layout_marginLeft="60dp"
                 android:layout_weight="1"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/newColor"
                 android:textSize="19dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
@@ -170,8 +169,8 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="22dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/health_color_icon" />
@@ -192,13 +191,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="96dp"
                 android:layout_weight="1"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/newColor"
                 android:textSize="19dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
@@ -206,8 +206,8 @@
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="22dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/entertainment_color_icon" />
@@ -228,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/newColor"
                 android:textSize="19dp"
                 android:textStyle="bold" />
@@ -255,7 +256,7 @@
             android:backgroundTint="@color/entertainmentColor"
             android:gravity="center"
             android:onClick="goToExpense"
-            android:text="Add Expenses"
+            android:text="Manage Expenses"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp" />
