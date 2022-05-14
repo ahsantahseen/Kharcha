@@ -93,7 +93,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextNumber2"
+            android:id="@+id/expenseAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -116,6 +116,7 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
+                android:onClick="addExpense"
                 android:text="ADD"
                 android:textColor="@color/entertainmentColor"
                 android:textSize="16sp"
@@ -127,6 +128,7 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
+                android:onClick="deductExpense"
                 android:text="Deduct"
                 android:textColor="@color/transportColor"
                 android:textSize="16sp"

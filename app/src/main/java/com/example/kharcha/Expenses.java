@@ -1,13 +1,17 @@
 package com.example.kharcha;
 
 public class Expenses {
-    public double food;
-    public double health;
-    public double transport;
-    public double entertainment;
-    public double totalExpenses;
+    public int food;
+    public int health;
+    public int transport;
+    public int entertainment;
+    public int totalExpenses;
 
-    public void Expenses(double food,double health,double transport,double entertainment){
+    public Expenses(){
+
+    }
+
+    public Expenses(int food,int health,int transport,int entertainment){
         this.food=food;
         this.entertainment=entertainment;
         this.health=health;

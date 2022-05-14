@@ -76,9 +76,19 @@ public class SignUpScreen extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     Toast.makeText(SignUpScreen.this, "Thank you for creating an account! Login with your new account", Toast.LENGTH_SHORT).show();
-                                    Intent startActivity = new Intent(SignUpScreen.this, LoginScreen.class);
-                                    startActivity(startActivity);
-                                    finish();
+                                    Expenses expenses = new Expenses(0, 0, 0, 0);
+                                    db.child("expenses").child(FirebaseAuth.getInstance().getUid()).setValue(expenses).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Intent startActivity = new Intent(SignUpScreen.this, LoginScreen.class);
+                                                startActivity(startActivity);
+                                                finish();
+                                            } else {
+                                                Toast.makeText(SignUpScreen.this, "Error! Cannot Add Initial Amount", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
                                 }else{
                                     Toast.makeText(SignUpScreen.this, "User Has Not Been Added To DB", Toast.LENGTH_SHORT).show();
                                 }
