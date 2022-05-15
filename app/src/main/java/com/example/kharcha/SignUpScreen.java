@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,8 +33,8 @@ public class SignUpScreen extends AppCompatActivity {
    EditText userEmail;
    EditText userDOB;
    Button registerBtn;
+   ProgressBar progressBar;
 
-   Calendar calendar;
    FirebaseAuth auth;
    DatabaseReference db;
     @Override
@@ -45,6 +46,7 @@ public class SignUpScreen extends AppCompatActivity {
         userPassword=findViewById(R.id.userPassword);
         userDOB=findViewById(R.id.userDateOfBirth);
         registerBtn=findViewById(R.id.registerBtn);
+        progressBar=findViewById(R.id.signUpProgress);
 
         auth=FirebaseAuth.getInstance();
         db=FirebaseDatabase.getInstance().getReference();
@@ -101,6 +103,8 @@ public class SignUpScreen extends AppCompatActivity {
             userPassword.setError("Password cannot be less than 6 characters");
             userPassword.requestFocus();
         }else {
+            progressBar.setVisibility(View.VISIBLE);
+            registerBtn.setFocusable(false);
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -116,22 +120,27 @@ public class SignUpScreen extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
+                                                progressBar.setVisibility(View.INVISIBLE);
                                                 Intent startActivity = new Intent(SignUpScreen.this, LoginScreen.class);
                                                 startActivity(startActivity);
                                                 finish();
                                             } else {
+                                                progressBar.setVisibility(View.INVISIBLE);
                                                 Toast.makeText(SignUpScreen.this, "Error! Cannot Add Initial Amount", Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });
                                 }else{
+                                    progressBar.setVisibility(View.INVISIBLE);
                                     Toast.makeText(SignUpScreen.this, "User Has Not Been Added To DB", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                     }else{
+                        progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(SignUpScreen.this, "User Has Not Been Registered", Toast.LENGTH_SHORT).show();
                     }
+                    registerBtn.setFocusable(true);
                 }
             });
         }

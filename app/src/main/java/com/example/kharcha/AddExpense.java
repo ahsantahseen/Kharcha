@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +27,9 @@ public class AddExpense extends AppCompatActivity {
     DatabaseReference db;
     Spinner spinner;
     EditText amount;
+    Button addButton;
+    Button deductButton;
+    ProgressBar progressBar;
     int FoodAmount;
     int entertainmentAmount;
     int transportAmount;
@@ -35,7 +40,9 @@ public class AddExpense extends AppCompatActivity {
         setContentView(R.layout.activity_add_expense);
         spinner=findViewById(R.id.ExpenseSpinner);
         amount=findViewById(R.id.expenseAmount);
-
+        progressBar=findViewById(R.id.expenseProgress);
+        addButton=findViewById(R.id.addExpenseBtn);
+        deductButton=findViewById(R.id.DeductExpenseBtn);
     }
 
     @Override
@@ -70,6 +77,9 @@ public class AddExpense extends AppCompatActivity {
             amount.requestFocus();
         }
         else {
+            progressBar.setVisibility(View.VISIBLE);
+            addButton.setFocusable(false);
+            deductButton.setFocusable(false);
             String value = spinner.getSelectedItem().toString();
             if (value.equalsIgnoreCase("food")) {
                 FoodAmount = FoodAmount + Integer.parseInt(amount.getText().toString());
@@ -79,6 +89,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Added Amount", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Add Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -92,6 +103,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Added Amount", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Add Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -105,6 +117,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Added Amount", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Add Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -118,6 +131,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Added Amount", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Add Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -126,6 +140,9 @@ public class AddExpense extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Error While Adding", Toast.LENGTH_SHORT).show();
             }
+            progressBar.setVisibility(View.INVISIBLE);
+            addButton.setFocusable(true);
+            deductButton.setFocusable(true);
         }
 
     }
@@ -144,6 +161,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Deducted Amount Successfully", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Deduct Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -157,6 +175,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Deducted Amount Successfully", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Deduct Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -170,6 +189,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Deducted Amount Successfully", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Deduct Amount", Toast.LENGTH_SHORT).show();
                         }
@@ -183,6 +203,7 @@ public class AddExpense extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(AddExpense.this, "Deducted Amount Successfully", Toast.LENGTH_SHORT).show();
+                            amount.setText(null);
                         } else {
                             Toast.makeText(AddExpense.this, "Error! Cannot Deduct Amount", Toast.LENGTH_SHORT).show();
                         }

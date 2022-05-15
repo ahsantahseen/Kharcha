@@ -9,7 +9,9 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ public class LoginScreen extends AppCompatActivity {
 
     EditText loginEmail;
     EditText loginPassword;
+    Button loginButton;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,8 @@ public class LoginScreen extends AppCompatActivity {
 
         loginEmail=findViewById(R.id.loginEmail);
         loginPassword=findViewById(R.id.loginPassword);
+        loginButton=findViewById(R.id.loginBtn);
+        progressBar=findViewById(R.id.progressBar);
         auth=FirebaseAuth.getInstance();
     }
 
@@ -62,6 +68,7 @@ public class LoginScreen extends AppCompatActivity {
             loginPassword.requestFocus();
         }
         else{
+            progressBar.setVisibility(View.VISIBLE);
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -73,6 +80,8 @@ public class LoginScreen extends AppCompatActivity {
                     }else{
                         Toast.makeText(LoginScreen.this, "Login Error! Please Try Again", Toast.LENGTH_SHORT).show();
                     }
+                    loginButton.setFocusable(true);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             });
         }

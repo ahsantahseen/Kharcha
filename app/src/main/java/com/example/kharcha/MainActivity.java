@@ -15,6 +15,7 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     TextView total;
     TextView currentDate;
     NumberFormat formatter;
+    ProgressBar progressBar;
     Pie pie;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         health=findViewById(R.id.HealthValue);
         total=findViewById(R.id.TotalExpValue);
         currentDate=findViewById(R.id.currentDate);
-
+        progressBar=findViewById(R.id.mainProgress);
         pie = AnyChart.pie();
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Food",0));
@@ -87,41 +89,42 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onStart() {
         super.onStart();
+        progressBar.setVisibility(View.VISIBLE);
         db= FirebaseDatabase.getInstance().getReference();
         db.child("expenses").child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                progressBar.setVisibility(View.INVISIBLE);
                 Expenses expenses=snapshot.getValue(Expenses.class);
                 FoodAmount=expenses.food;
                 entertainmentAmount=expenses.entertainment;
                 healthAmount=expenses.health;
                 transportAmount=expenses.transport;
 
-
+                if(FoodAmount<=0&&entertainmentAmount<=0&&healthAmount<=0&&transportAmount<=0){
+                    Toast.makeText(MainActivity.this, "Add Expenses to Populate the Chart", Toast.LENGTH_SHORT).show();
+                }
                 Food.setText(NumberFormat.getCurrencyInstance(new Locale("en_PK","PK")).format(FoodAmount));
                 entertainment.setText(NumberFormat.getCurrencyInstance(new Locale("en_PK","PK")).format(entertainmentAmount));
                 health.setText(NumberFormat.getCurrencyInstance(new Locale("en_PK","PK")).format(healthAmount));
                 transport.setText(NumberFormat.getCurrencyInstance(new Locale("en_PK","PK")).format(transportAmount));
                 total.setText(NumberFormat.getCurrencyInstance(new Locale("en_PK","PK")).format(expenses.totalExpenses));
-
-                List<DataEntry> data = new ArrayList<>();
-                data.add(new ValueDataEntry("Food",FoodAmount));
-                data.add(new ValueDataEntry("Entertainment", entertainmentAmount));
-                data.add(new ValueDataEntry("Health", healthAmount));
-                data.add(new ValueDataEntry("Transport;", transportAmount));
-                pie.data(data);
-                Date date = new Date();
-                String stringDate = DateFormat.getDateInstance().format(date);
-                currentDate.setText(stringDate);
-
-
+                    List<DataEntry> data = new ArrayList<>();
+                    data.add(new ValueDataEntry("Food", FoodAmount));
+                    data.add(new ValueDataEntry("Entertainment", entertainmentAmount));
+                    data.add(new ValueDataEntry("Health", healthAmount));
+                    data.add(new ValueDataEntry("Transport;", transportAmount));
+                    pie.data(data);
+                    Date date = new Date();
+                    String stringDate = DateFormat.getDateInstance().format(date);
+                    currentDate.setText(stringDate);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(MainActivity.this, "The read failed: " + error.getCode(), Toast.LENGTH_SHORT).show();
             }
         });
